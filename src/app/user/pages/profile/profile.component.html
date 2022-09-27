@@ -1,30 +1,76 @@
+
+<br/>
+<!-- {{model | json}} -->
 <div [align]="['center']">
-
-  <br/>
-
- <form #user = "ngForm" (ngSubmit)="submit()">
+ <!-- <form #user = "ngForm" (ngSubmit)="submit()" style="margin: auto; max-width: 400px;  font-family: arial narrow;">
 
   <div class  = "form-group">
     <label for="name">Name: </label>
-    <input [(ngModel)]="model.name" type="text" name="name" id="name" class="form-group">
+    <input [(ngModel)]="model.name" type="text" name="name" id="name"  placeholder="write name here" #name="ngModel" class="form-control" required>
+    <div [hidden]="name.valid" class="alert alert-danger">Name cannot be empty
+    </div>
   </div>
   <br/>
+
   <div class  = "form-group">
     <label for="email">Email: </label>
-    <input [(ngModel)]="model.email" type="text" name="email" id="email" class="form-group">
+    <input [(ngModel)]="model.email" type="text" name="email" id="email" placeholder="write email here" #email="ngModel" class="form-control" width="100px" required>
   </div>
+  <div [hidden]="email.valid" class="alert alert-danger">Email cannot be empty</div>
   <br/>
+
   <div class  = "form-group">
     <label for="bio">Bio: </label>
-    <input [(ngModel)]="model.bio" type="text" name="bio" id="bio" class="form-group">
+    <input [(ngModel)]="model.bio" type="text" name="bio" placeholder="write bio here" #bio="ngModel" id="bio" class="form-control" required>
   </div>
+  <div [hidden]="bio.valid" class="alert alert-danger">Bio cannot be empty</div>
   <br/>
+
   <div class  = "form-group">
     <label for="active">Active: </label>
-    <input [(ngModel)]="model.active" type="text" name="active" id="active" class="form-group">
+    <input [(ngModel)]="model.active" type="text" placeholder="write active status here" #active="ngModel" name="active" id="active" class="form-control" required>
+  </div>
+  <div [hidden]="active.valid" class="alert alert-danger">Active status cannot be empty</div>
+  <br/>
+
+<button type="submit">Submit</button>
+ </form> -->
+
+
+
+ <form [formGroup]="userForm" (ngSubmit)="submit()" style="margin: auto; max-width: 400px; font-family: arial narrow;">
+  <br/>
+  <div class  = "form-group">
+    <label for="name">Name: </label>
+    <input formControlName="name" type="text" id="name"  placeholder="write name here" class="form-control" required>
+
+  </div>
+  <br/>
+
+  <div class  = "form-group">
+    <label for="email">Email: </label>
+    <input formControlName="email" type="text"  id="email" placeholder="write email here" class="form-control" width="100px" required>
+
+  <br/>
+
+  <div class  = "form-group">
+    <label for="bio">Bio: </label>
+    <input formControlName="bio" type="text"  placeholder="write bio here" id="bio" class="form-control" required>
   </div>
 
+  <br/>
 
- </form>
+  <div class  = "form-group">
+    <label for="active">Active: </label>
+    <input formControlName="active" type="text" placeholder="active: true/false"  id="active" class="form-control" required>
+  </div>
+
+  <br/>
+
+<!-- <button type="submit">Submit</button> -->
+<button  href="#" class="button" type="submit">Submit</button>
+
+<!-- <a href="#" class="button" routerLink="/profile">User</a> -->
 
 </div>
+
