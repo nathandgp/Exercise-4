@@ -5,6 +5,8 @@ import { BlogItemComponent } from './blog/components/blog-item/blog-item.compone
 import { BookItemComponent } from './book/components/book-item/book-item.component';
 import { FormComponent } from './user/components/form/form.component';
 import { ProfileComponent } from './user/pages/profile/profile.component';
+import { BookService } from './book/services/book.service';
+import { BookListComponent } from './book/pages/book-list/book-list.component';
 
 const routes: Routes = [
   {
