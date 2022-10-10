@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Blog} from '../../models/blog'
 
@@ -10,6 +10,12 @@ import { Blog} from '../../models/blog'
 export class BlogItemComponent implements OnInit, AfterContentInit  {
 
   blogName = "This is my blog."
+
+  @Input() blogItemArray: Blog | undefined;
+
+  @Output() editById = new EventEmitter();
+
+  @Output() deleteById = new EventEmitter();
 
   blogs: Blog[] = [
     {
@@ -36,13 +42,23 @@ export class BlogItemComponent implements OnInit, AfterContentInit  {
   ]
 
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngAfterContentInit(): void {
    // throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
+  }
+
+  editBlog() {
+    this.editById.emit(this.blogItemArray?.id);
+  }
+
+  deleteBlog() {
+    this.deleteById.emit(this.blogItemArray?.id)
   }
 
 }
